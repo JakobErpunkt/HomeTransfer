@@ -15,10 +15,10 @@ to create different versions for either Windows, Mac or Linux systems. However, 
 prototypes can be found at the following repositories:
 <ul>
   <li>
-    Windows C# implementation at <a href="https://github.com/JakobErpunkt/HomeTransferCS">HomeTransferCS</a>
+    Windows C# implementation at <a href="https://github.com/McMissa/HomeTransferCS">HomeTransferCS</a>
   </li>
   <li>
-    Mac Swift implementation at <a href="https://github.com/JakobErpunkt/HomeTransferSwift">HomeTransferSwift</a> (not yet)
+    Mac Swift implementation at <a href="https://github.com/McMissa/HomeTransferSwift">HomeTransferSwift</a> (not yet)
   </li>
 </ul>
 The native implementations do not feature full commments and are mostly adapted ports from the Java version.
