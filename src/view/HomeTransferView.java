@@ -22,14 +22,17 @@ public class HomeTransferView extends JFrame implements ActionListener{
     private static HomeTransferView view;
 
     private JLabel fileLabel;
+    private JLabel serverLabel;
     private JList fileList;
     private JList serverList;
     private JPanel filePanel;
     private JPanel serverPanel;
     private JPanel buttonPanel;
     private Box fileBox;
+    private Box serverBox;
     private Box buttonBox;
     private JScrollPane fileScrollPane;
+    private JScrollPane serverScrollPane;
     private JButton browse;
     private JButton refresh;
     private JButton send;
@@ -46,12 +49,10 @@ public class HomeTransferView extends JFrame implements ActionListener{
         fileList = new JList(new DefaultListModel());
         fileList.setDragEnabled(true);
         fileList.setMinimumSize(new Dimension(400, 300));
-        serverList = new JList();
+        fileList.setCellRenderer(new FileListRenderer());
         fileBox = new Box(BoxLayout.Y_AXIS);
         filePanel = new JPanel();
-        serverPanel = new JPanel();
         filePanel.add(fileList);
-        serverPanel.add(serverList);
         fileScrollPane = new JScrollPane(fileList);
         fileScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         fileScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
@@ -59,7 +60,6 @@ public class HomeTransferView extends JFrame implements ActionListener{
         fileBox.add(fileLabel);
         fileBox.add(fileScrollPane);
         this.add(fileBox);
-        this.add(serverPanel);
 
         TransferHandler handler = new TransferHandler() {
             @Override
@@ -108,8 +108,6 @@ public class HomeTransferView extends JFrame implements ActionListener{
             }
         };
         fileList.setTransferHandler(handler);
-        fileList.setCellRenderer(new FileListRenderer());
-        serverList.setCellRenderer(new ServerListRenderer());
 
 
         buttonPanel = new JPanel();
@@ -133,6 +131,21 @@ public class HomeTransferView extends JFrame implements ActionListener{
         buttonBox.add(refresh);
         buttonPanel.add(buttonBox);
         this.add(buttonPanel);
+
+        serverLabel = new JLabel("Servers available");
+        serverList = new JList();
+        serverList.setCellRenderer(new ServerListRenderer());
+        serverBox = new Box(BoxLayout.Y_AXIS);
+        serverPanel = new JPanel();
+        serverPanel.add(serverList);
+        serverScrollPane = new JScrollPane(serverList);
+        serverScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        serverScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        serverScrollPane.setPreferredSize(new Dimension(400, 300));
+        serverBox.add(serverLabel);
+        serverBox.add(serverScrollPane);
+        this.add(serverBox);
+
 
         HomeTransferProgressFrame.getInstance();
 
